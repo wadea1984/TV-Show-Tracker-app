@@ -5,25 +5,29 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.cognixia.tv_show_tracker</groupId>
-  <artifactId>tv_show_tracker</artifactId>
+  <artifactId>jdbc</artifactId>
   <version>1</version>
 
-  <name>tv_show_tracker</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>jdbc</name>
+
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
   <dependencies>
-     <dependency>
-<groupId>com.mysql</groupId>
-<artifactId>mysql-connector-j</artifactId>
-<version>9.3.0</version>
-</dependency>
+
+   
+    <dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>9.3.0</version>
+    </dependency>
+
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -78,3 +82,4 @@
     </pluginManagement>
   </build>
 </project>
+

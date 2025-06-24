@@ -7,9 +7,9 @@ CREATE TABLE users (
     user_id INT AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL unique,
     email VARCHAR(255) NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     CHECK (CHAR_LENGTH(username) BETWEEN 5 AND 20),
-    CHECK (CHAR_LENGTH(password_hash) >= 8),
+    CHECK (CHAR_LENGTH(password) >= 8),
     PRIMARY KEY (user_id)
 );
 
@@ -17,7 +17,7 @@ create table tv_shows(
 show_id int auto_increment,
 name varchar(255) NOT NULL,
 episodes int NOT NULL,
-discription TEXT,
+description TEXT,
 primary key(show_id)
 );
 
