@@ -26,6 +26,8 @@ create table show_tracker(
     user_id int,
     episodes_watched int,
     rating INT CHECK (rating BETWEEN 1 AND 5),
+     status ENUM('Plan to Watch', 'Currently Watching', 'Finished')
+     DEFAULT 'Plan to Watch',
     primary key (show_id,user_id),
     foreign key(show_id) references tv_shows(show_id) ON DELETE CASCADE,
     foreign Key(user_id) references users(user_id) ON DELETE CASCADE
