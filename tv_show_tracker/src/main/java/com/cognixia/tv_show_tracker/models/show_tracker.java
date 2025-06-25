@@ -2,7 +2,7 @@ package com.cognixia.tv_show_tracker.models;
 
 //enum for status
 public class show_tracker {
-enum status{
+public enum status{
     Plan_to_Watch,
     Currently_Watching,
     Finished

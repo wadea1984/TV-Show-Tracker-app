@@ -15,22 +15,23 @@ INSERT INTO users (username, email, password) VALUES
 ('echoZulu', 'echo@example.com', 'securekeypass');
 
 -- Insert 15 TV shows
-INSERT INTO tv_shows (name, episodes, description) VALUES
-('Breaking Bad', 62, 'A chemistry teacher turned meth producer.'),
-('Game of Thrones', 73, 'Noble families fight for control of the Iron Throne.'),
-('Stranger Things', 34, 'Kids face supernatural threats in a small town.'),
-('The Office', 201, 'Mockumentary about a paper company.'),
-('Friends', 236, 'Six friends navigate life and love in NYC.'),
-('The Witcher', 24, 'Monster hunter Geralt battles fate and beasts.'),
-('Better Call Saul', 63, 'The journey of Jimmy McGill to Saul Goodman.'),
-('The Mandalorian', 24, 'A lone bounty hunter in the Star Wars universe.'),
-('The Crown', 60, 'The reign of Queen Elizabeth II.'),
-('The Boys', 32, 'Vigilantes confront corrupt superheroes.'),
-('Dark', 26, 'Time travel and family secrets in a German town.'),
-('Money Heist', 41, 'A criminal mastermind leads heists on Spain’s mint.'),
-('Loki', 12, 'The god of mischief causes multiverse chaos.'),
-('Ozark', 44, 'A family launders money for a drug cartel.'),
-('Peaky Blinders', 36, 'A gangster family in post-WWI Birmingham.');
+INSERT INTO tv_shows (name, episodes, description, genre) VALUES
+('Breaking Bad', 62, 'A chemistry teacher turned meth producer.', 'Crime Drama'),
+('Game of Thrones', 73, 'Noble families fight for control of the Iron Throne.', 'Fantasy'),
+('Stranger Things', 34, 'Kids face supernatural threats in a small town.', 'Sci-Fi Horror'),
+('The Office', 201, 'Mockumentary about a paper company.', 'Comedy'),
+('Friends', 236, 'Six friends navigate life and love in NYC.', 'Sitcom'),
+('The Witcher', 24, 'Monster hunter Geralt battles fate and beasts.', 'Fantasy'),
+('Better Call Saul', 63, 'The journey of Jimmy McGill to Saul Goodman.', 'Legal Drama'),
+('The Mandalorian', 24, 'A lone bounty hunter in the Star Wars universe.', 'Sci-Fi'),
+('The Crown', 60, 'The reign of Queen Elizabeth II.', 'Historical Drama'),
+('The Boys', 32, 'Vigilantes confront corrupt superheroes.', 'Superhero Drama'),
+('Dark', 26, 'Time travel and family secrets in a German town.', 'Sci-Fi Thriller'),
+('Money Heist', 41, 'A criminal mastermind leads heists on Spain’s mint.', 'Heist Thriller'),
+('Loki', 12, 'The god of mischief causes multiverse chaos.', 'Superhero Fantasy'),
+('Ozark', 44, 'A family launders money for a drug cartel.', 'Crime Thriller'),
+('Peaky Blinders', 36, 'A gangster family in post-WWI Birmingham.', 'Historical Crime Drama');
+
 
 -- Users tracking 2 shows each
 INSERT INTO show_tracker (show_id, user_id, episodes_watched, rating, status) VALUES
@@ -45,3 +46,4 @@ INSERT INTO show_tracker (show_id, user_id, episodes_watched, rating, status) VA
 (9, 5, 25, 4, 'Currently Watching'),
 (10, 5, 32, 4, 'Finished');
 
+select * from tv_shows;

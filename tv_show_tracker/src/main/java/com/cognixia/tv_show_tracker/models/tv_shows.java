@@ -6,6 +6,7 @@ private int show_id;
 private String name;
 private int episodes;
 private String description;
+private String genre;
 
 
    
@@ -13,11 +14,12 @@ private String description;
 
     public tv_shows() {}
 
-    public tv_shows(int show_id, String name, int episodes, String description) {
+    public tv_shows(int show_id, String name, int episodes, String description,String genre) {
     this.show_id = show_id;
     this.name = name;
     this.episodes = episodes;
     this.description = description;
+    this.genre=genre;
 }
 
     /**
@@ -75,12 +77,24 @@ private String description;
     public void setDescription(String description) {
         this.description = description;
     }
+    
+      public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
     @Override
     public String toString() {
         return "tv_shows [show_id=" + show_id + ", name=" + name + ", episodes=" + episodes + ", description="
-                + description + "]";
+                + description + ", genre=" + genre + "]";
     }
+
+    
+
+  
 
     
 

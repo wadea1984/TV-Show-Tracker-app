@@ -13,12 +13,13 @@ CREATE TABLE users (
     PRIMARY KEY (user_id)
 );
 
-create table tv_shows(
-show_id int auto_increment,
-name varchar(255) NOT NULL,
-episodes int NOT NULL,
-description TEXT,
-primary key(show_id)
+CREATE TABLE tv_shows (
+    show_id INT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    episodes INT NOT NULL,
+    description TEXT,
+    genre VARCHAR(100),
+    PRIMARY KEY (show_id)
 );
 
 create table show_tracker(
