@@ -1,6 +1,7 @@
 package com.cognixia.tv_show_tracker.menus;
 
 import java.io.EOFException;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -31,11 +32,14 @@ public class loginAndRegister {
                     }
                     else if(x==3){
                         sc.close();
-                        check=true;
+                        System.exit(0);
                     }
                     else{
-                        throw new InvalidInputException();
+                        throw new InvalidInputException("Input must be between 1-3");
                     }                
+                }
+                catch(InvalidInputException e){
+                    System.out.println(e.getMessage());
                 }
                 catch(Exception e){
                     System.out.println("Invalid Input");
@@ -60,28 +64,33 @@ public class loginAndRegister {
         while(!check){
             
             try{
-                System.out.println("Login. Enter q as a username to return to the homepage!!");
+                System.out.println("Login Page enter q as a username to return to the homepage!!\n");
                 System.out.print("Enter username: ");
-                username=sc.nextLine();
-
+               //username=sc.nextLine();
+                username="alex1984";
                 
                 //returns to the home page if user enters q
                 if(username.toLowerCase().equals("q")){
                     return;
                 }
                 System.out.print("Enter password: ");
-                password=sc.nextLine();
-                System.out.println(username+" "+password);
+               //password=sc.nextLine();
+                password="password123";
+                
                 Optional<users> user=ts.loginUser(username,password);
                 if(user.isPresent()){
                          //sends user to to the movie menu
-                         System.out.println(username+"is logged in");
-                         check=true;
+                         System.out.println(username+" is logged in\n");
+
+                         TrackerMenus.mainPage(sc,user.get());
                         }
                 else{
-                    throw new InvalidInputException();
+                    throw new InvalidInputException("Incorrect username or password");
                 }
 
+            }
+            catch(InvalidInputException e){
+                System.out.println(e.getMessage());
             }
             catch(Exception e){
                 System.out.println("Invalid Username or Password");
@@ -119,13 +128,13 @@ public class loginAndRegister {
                 email=sc.nextLine();
                 //checks for correct input
                 if(username.length()<5||username.length()>20){
-                    System.out.println("username most be greater than 4 characters and less than 21");
-                    throw new InvalidInputException();
+                    String s="username most be greater than 4 characters and less than 21";
+                    throw new InvalidInputException(s);
                 }
                 //checks for correct input
                 if(password.length()<8){
-                    System.out.println("Your password must be at least 8 characters. ");
-                    throw new InvalidInputException();
+                    String s="Your password must be at least 8 characters. ";
+                    throw new InvalidInputException(s);
                     
                 }
 
@@ -139,9 +148,15 @@ public class loginAndRegister {
                          check=true;
                         }
                 else{
-                    throw new InvalidInputException();
+                    throw new InvalidInputException("User was not created");
                 }
 
+            }
+            catch(InvalidInputException e){
+                System.out.println(e.getMessage());
+            }
+            catch(SQLException e){
+                System.out.println("This username is already in use");
             }
             catch(Exception e){
                 System.out.println("Invalid Username or Password");

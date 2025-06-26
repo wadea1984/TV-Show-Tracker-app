@@ -188,7 +188,7 @@ public class TrackerDAOService implements TrackerDAO {
             trackerList.add(new show_tracker(show_id, user_id, episodes_watched, rating, showStatus));
         }
 
-        closeConnection();
+        
         return Optional.ofNullable(trackerList);
     }
 
