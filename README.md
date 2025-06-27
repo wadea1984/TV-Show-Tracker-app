@@ -68,7 +68,7 @@ A Java terminal-based application that allows users to register, log in, and tra
 
 ## 📂 Project Structure
 
-![Project Structure](<images/tv_tracker_diagram%20(2).png>)
+![Project Structure](images/tv_tracker_diagram.png)
 
 ---
 
