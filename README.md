@@ -76,7 +76,7 @@ A Java terminal-based application that allows users to register, log in, and tra
 
 ### 🧭 Main Menu
 
-![Main Menu](images/main)  
+![Main Menu](images/main.png)  
 Gives the user three options:  
 1 - Login  
 2 - Register  
