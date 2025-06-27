@@ -66,16 +66,16 @@ public class loginAndRegister {
             try{
                 System.out.println("Login Page enter q as a username to return to the homepage!!\n");
                 System.out.print("Enter username: ");
-               //username=sc.nextLine();
-                username="alex1984";
+                 username=sc.nextLine();
+                //username="alex1984";
                 
                 //returns to the home page if user enters q
                 if(username.toLowerCase().equals("q")){
                     return;
                 }
                 System.out.print("Enter password: ");
-               //password=sc.nextLine();
-                password="password123";
+                password=sc.nextLine();
+                //password="password123";
                 
                 Optional<users> user=ts.loginUser(username,password);
                 if(user.isPresent()){

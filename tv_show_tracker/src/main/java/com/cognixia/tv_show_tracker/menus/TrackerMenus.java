@@ -51,7 +51,7 @@ public class TrackerMenus {
 
         }
     }
-
+    //Allows user to be able to track shows provided by the application
     public static void trackShows(Scanner sc, users user) {
         sc.nextLine();
         // create instance of TrackerDAO to access mysql
@@ -88,7 +88,7 @@ public class TrackerMenus {
                 if (show.isPresent()) {
                     if (isCreated) {
 
-                        System.out.println("You are now tracking " + show.get().getName());
+                        System.out.println("You are now tracking " + show.get().getName()+"\nDescription: "+show.get().getDescription());
                         sc.nextLine();
                         return;
 
@@ -98,15 +98,16 @@ public class TrackerMenus {
                 }
 
             } catch (SQLException e) {
-                System.out.println("You are currently tracking this show.");
+                System.out.println("You are currently tracking this show or this Id is not listed.");
             } catch (Exception e) {
-
+                sc.nextLine();
                 System.out.println("Invalid input");
+
 
             }
         }
     }
-
+    //allows users to track and update tv showas
     public static void updateShowTracker(users user, Scanner sc) {
         sc.nextLine();
         // create instance of TrackerDAO to access mysql
@@ -147,18 +148,22 @@ public class TrackerMenus {
                     sc.nextLine();
                     return;
                 }
+                
                 // creates objects for the felids that will be updated
                 Optional<show_tracker> updatedTracker = ts.getShowTrackerByUserAndTVshow(user.getUser_id(), x);
+            
                 Optional<tv_shows> updatedShow = ts.getTVshowByID(x);
-                if (updatedShow.isPresent() && updatedShow.isPresent()) {
+                if (updatedTracker.isPresent() && updatedShow.isPresent()) {
                     boolean updated = false;
                     System.out.println("Your are updating " + updatedShow.get().getName());
                     System.out.print("Enter the number of episodes have you watched: ");
                     int e = sc.nextInt();
+                    if(e<1){
+                        throw new InvalidInputException("The value most be greater than zero");
+                    }
                     int total_watched = updatedTracker.get().getEpisodes_watched() + e;
                     
-                     // start the episodes watched over after user finished a show
-                   
+                     // start the episodes watched over afterthe  user finished a show
                     if (updatedTracker.get().getShowStatus() == status.Finished) {
                         System.out.println("You are now watching " + updatedShow.get().getName() + " again");
                         updated = ts.updateTracker(new show_tracker(updatedShow.get().getShow_id(), user.getUser_id(),
@@ -186,15 +191,15 @@ public class TrackerMenus {
                     else if (updatedTracker.get().getShowStatus() == status.Plan_to_Watch) {
                         System.out.println("You are now currently watching " + updatedShow.get().getName());
                         updated = ts.updateTracker(new show_tracker(updatedShow.get().getShow_id(), user.getUser_id(),
-                                total_watched, 3, status.Currently_Watching));
+                                total_watched, 0, status.Currently_Watching));
                     }
                    
                     // if user has already currently watching a show it updates only the episodes
                     // watched
                     else {
-                        System.out.println("You are currently " + updatedShow.get().getName());
+                        System.out.println("You are currently watching " + updatedShow.get().getName());
                         updated = ts.updateTracker(new show_tracker(updatedShow.get().getShow_id(), user.getUser_id(),
-                                total_watched,3, status.Currently_Watching));
+                                total_watched,updatedTracker.get().getRating(), status.Currently_Watching));
                     }
 
                     if (updated) {
@@ -206,7 +211,7 @@ public class TrackerMenus {
                         throw new InvalidInputException("Failed to update tracker");
                     }
                 } else {
-                    throw new UserNotFoundException(user);
+                    throw new InvalidInputException("Id not found!");
                 }
 
             } catch (InvalidInputException e) {
@@ -219,7 +224,7 @@ public class TrackerMenus {
             } catch (Exception e) {
 
                 System.out.println("Invalid input");
-                e.printStackTrace();
+               
                 sc.nextLine();
 
             }

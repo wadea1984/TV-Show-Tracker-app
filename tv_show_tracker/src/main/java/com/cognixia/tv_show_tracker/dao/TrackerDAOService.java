@@ -279,10 +279,10 @@ public class TrackerDAOService implements TrackerDAO {
         establishConnection();
         double average = 0;
 
-        String sql = "SELECT avg(rating) as average FROM show_tracker st " +
-                "JOIN tv_shows ts ON ts.show_id = st.show_id " +
-                "WHERE ts.show_id = ? " +
-                "GROUP BY ts.name";
+       String sql = "SELECT AVG(rating) AS average FROM show_tracker st " +
+             "JOIN tv_shows ts ON ts.show_id = st.show_id " +
+             "WHERE ts.show_id = ? AND rating IS NOT NULL AND rating > 0 " +
+             "GROUP BY ts.name";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setInt(1, show_id);
 

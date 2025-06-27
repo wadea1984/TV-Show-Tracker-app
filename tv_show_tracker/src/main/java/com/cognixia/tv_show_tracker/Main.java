@@ -23,8 +23,5 @@ public class Main {
      static TrackerDAOService ts=new TrackerDAOService();
     public static void main(String[] args) {
      loginAndRegister.HomePage();
-   
-    
-      
     }
 }

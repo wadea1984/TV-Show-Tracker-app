@@ -1,7 +1,7 @@
 package com.cognixia.tv_show_tracker.Exceptions;
 
 public class InvalidInputException extends Exception{
-       public static String m;
+       public String m;
     public InvalidInputException(String m){
        this.m=m;
     }
