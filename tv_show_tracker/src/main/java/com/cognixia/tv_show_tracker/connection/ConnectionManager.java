@@ -14,10 +14,11 @@ public class ConnectionManager {
     private ConnectionManager(){};
     private static void makeConnection()throws FileNotFoundException, IOException, ClassNotFoundException, SQLException {
         Properties probs=new Properties();
-        probs.load(new FileInputStream("src\\resources\\config.properties"));
-        String url=probs.getProperty("url");
-        String username=probs.getProperty("username");
-        String password=probs.getProperty("password");
+        //added hard coded url,username, and password because resources folder was causing errors depending
+        // on how the project is opened.
+        String url="jdbc:mysql://localhost:3306/TV_show_tracker";
+        String username="root";
+        String password="password";
        
         Class.forName("com.mysql.cj.jdbc.Driver"); 
         connection=DriverManager.getConnection(url, username, password);
